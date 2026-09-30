@@ -23,7 +23,9 @@
             <span class="ebh-brand-subtitle d-none d-sm-block">Rooms & Bedspace Rental</span>
           </div>
         </a>
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-toggle="collapse" data-target="#navbarContent"><span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
             <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
@@ -78,75 +80,90 @@
         <div class="row g-4 mb-5">
           <!-- Standard Solo -->
           <div class="col-lg-4">
-            <div class="ebh-card h-100 d-flex flex-column">
-              <div class="placeholder-box py-4 text-center bg-white border-bottom">
-                <i class="bi bi-door-closed display-4 text-primary"></i>
-                <div class="fw-bold text-navy small mt-2">Solo Room Layout</div>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box cursor-pointer" onclick="openRoomDetailsModal('Standard Solo Room', '₱5,000', 'Solo Unit', ['Single wooden bed frame with mattress', 'Private study desk and chair', 'Lockable clothes wardrobe', 'Water and electricity included in monthly rent', 'Fast compound fiber Wi-Fi', 'Night curfew security & peaceful quiet hours'], '../assets/img/solo_room.jpg', 'Our most popular solo accommodation. Private and quiet on the 1st floor, fully furnished and move-in ready.')">
+                <img src="../assets/img/solo_room.jpg" alt="Standard Solo Room">
+                <span class="gallery-badge-category">Popular</span>
               </div>
-              <div class="p-4 d-flex flex-column flex-grow-1 bg-white">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <h5 class="fw-bold text-navy mb-0">Standard Solo Room</h5>
-                  <span class="badge bg-success text-white">Popular</span>
+              <div class="p-4 d-flex flex-column flex-grow-1 bg-white justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h5 class="fw-bold text-navy mb-0">Standard Solo Room</h5>
+                    <span class="badge bg-success text-white">Popular</span>
+                  </div>
+                  <div class="display-6 fw-bold text-navy mb-2">₱5,000 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Private bedroom with dedicated study desk, sturdy bed frame, mattress, and clothes cabinet.</p>
+                  <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-success me-2"></i> Single bed & mattress included</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Private study desk and chair</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Lockable clothes cabinet</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
+                  </ul>
                 </div>
-                <div class="display-6 fw-bold text-navy mb-2">₱5,000 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small mb-3">Private bedroom with dedicated study desk, sturdy bed frame, mattress, and clothes cabinet.</p>
-                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
-                  <li><i class="bi bi-check2 text-success me-2"></i> Single bed & mattress included</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Private study desk and chair</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Lockable clothes cabinet</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
-                </ul>
-                <a href="../index.html#contact" class="btn btn-ebh-primary w-100">Inquire for Solo Room</a>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-outline-primary btn-sm w-100" onclick="openRoomDetailsModal('Standard Solo Room', '₱5,000', 'Solo Unit', ['Single wooden bed frame with mattress', 'Private study desk and chair', 'Lockable clothes wardrobe', 'Water and electricity included in monthly rent', 'Fast compound fiber Wi-Fi', 'Night curfew security & peaceful quiet hours'], '../assets/img/solo_room.jpg', 'Our most popular solo accommodation. Private and quiet on the 1st floor, fully furnished and move-in ready.')">Full Specs</button>
+                  <a href="../index.html#contact" class="btn btn-ebh-primary btn-sm w-100">Inquire Now</a>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Shared Bedspace -->
           <div class="col-lg-4">
-            <div class="ebh-card h-100 d-flex flex-column">
-              <div class="placeholder-box py-4 text-center bg-white border-bottom">
-                <i class="bi bi-people display-4 text-primary"></i>
-                <div class="fw-bold text-navy small mt-2">Bedspace Layout</div>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box cursor-pointer" onclick="openRoomDetailsModal('Shared Bedspace (2-Person)', '₱3,500', 'Bedspace Unit', ['Individual twin bed with clean mattress', 'Personal padlockable storage locker', 'Clean shared bathroom and hot shower', 'Water and electricity included in monthly rent', 'Strict 2 occupants limit per room', 'Curfew gate and peaceful rest hours'], '../assets/img/bedspace_room.jpg', 'Affordable shared room strictly capped at 2 occupants per room for space and comfort.')">
+                <img src="../assets/img/bedspace_room.jpg" alt="Shared Bedspace">
+                <span class="gallery-badge-category">Budget</span>
               </div>
-              <div class="p-4 d-flex flex-column flex-grow-1 bg-white">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <h5 class="fw-bold text-navy mb-0">Shared Bedspace</h5>
-                  <span class="badge bg-primary text-white">Budget</span>
+              <div class="p-4 d-flex flex-column flex-grow-1 bg-white justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h5 class="fw-bold text-navy mb-0">Shared Bedspace</h5>
+                    <span class="badge bg-primary text-white">Budget</span>
+                  </div>
+                  <div class="display-6 fw-bold text-navy mb-2">₱3,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Affordable shared room strictly capped at 2 occupants per room for space and comfort.</p>
+                  <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-success me-2"></i> Individual bed with mattress</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Personal padlockable wall locker</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Shared clean bathroom & shower</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
+                  </ul>
                 </div>
-                <div class="display-6 fw-bold text-navy mb-2">₱3,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small mb-3">Affordable shared room strictly capped at 2 occupants per room for space and comfort.</p>
-                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
-                  <li><i class="bi bi-check2 text-success me-2"></i> Individual bed with mattress</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Personal padlockable wall locker</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Shared clean bathroom & shower</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
-                </ul>
-                <a href="../index.html#contact" class="btn btn-outline-primary w-100">Inquire for Bedspace</a>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-outline-primary btn-sm w-100" onclick="openRoomDetailsModal('Shared Bedspace (2-Person)', '₱3,500', 'Bedspace Unit', ['Individual twin bed with clean mattress', 'Personal padlockable storage locker', 'Clean shared bathroom and hot shower', 'Water and electricity included in monthly rent', 'Strict 2 occupants limit per room', 'Curfew gate and peaceful rest hours'], '../assets/img/bedspace_room.jpg', 'Affordable shared room strictly capped at 2 occupants per room for space and comfort.')">Full Specs</button>
+                  <a href="../index.html#contact" class="btn btn-ebh-primary btn-sm w-100">Inquire Now</a>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Solo Deluxe -->
           <div class="col-lg-4">
-            <div class="ebh-card h-100 d-flex flex-column">
-              <div class="placeholder-box py-4 text-center bg-white border-bottom">
-                <i class="bi bi-stars display-4 text-primary"></i>
-                <div class="fw-bold text-navy small mt-2">Deluxe Suite Layout</div>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box cursor-pointer" onclick="openRoomDetailsModal('Solo Deluxe Suite', '₱5,500', 'Deluxe Unit', ['Double bed frame and plush mattress', 'Spacious executive study desk & chair', 'Large double wardrobe closet', 'Water and electricity included in monthly rent', 'Upper floor corner panoramic window', 'Aircon-ready outlet and ceiling fan'], '../assets/img/deluxe_suite.jpg', 'Our largest solo unit offering maximum privacy, double bed comfort, and optimal air flow.')">
+                <img src="../assets/img/deluxe_suite.jpg" alt="Solo Deluxe Suite">
+                <span class="gallery-badge-category">Spacious</span>
               </div>
-              <div class="p-4 d-flex flex-column flex-grow-1 bg-white">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <h5 class="fw-bold text-navy mb-0">Solo Deluxe Suite</h5>
-                  <span class="badge bg-info text-dark">Extra Space</span>
+              <div class="p-4 d-flex flex-column flex-grow-1 bg-white justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h5 class="fw-bold text-navy mb-0">Solo Deluxe Suite</h5>
+                    <span class="badge bg-info text-dark">Extra Space</span>
+                  </div>
+                  <div class="display-6 fw-bold text-navy mb-2">₱5,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Second floor corner unit with double bed, natural ventilation, and balcony breeze.</p>
+                  <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-success me-2"></i> Double bed & premium mattress</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Corner window with fresh airflow</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Ceiling fan + aircon-ready outlet</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
+                  </ul>
                 </div>
-                <div class="display-6 fw-bold text-navy mb-2">₱5,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small mb-3">Second floor corner unit with double bed, natural ventilation, and balcony breeze.</p>
-                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
-                  <li><i class="bi bi-check2 text-success me-2"></i> Double bed & premium mattress</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Corner window with fresh airflow</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Ceiling fan + aircon-ready outlet</li>
-                  <li><i class="bi bi-check2 text-success me-2"></i> Water & electricity included</li>
-                </ul>
-                <a href="../index.html#contact" class="btn btn-ebh-accent w-100">Inquire for Deluxe Suite</a>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-outline-primary btn-sm w-100" onclick="openRoomDetailsModal('Solo Deluxe Suite', '₱5,500', 'Deluxe Unit', ['Double bed frame and plush mattress', 'Spacious executive study desk & chair', 'Large double wardrobe closet', 'Water and electricity included in monthly rent', 'Upper floor corner panoramic window', 'Aircon-ready outlet and ceiling fan'], '../assets/img/deluxe_suite.jpg', 'Our largest solo unit offering maximum privacy, double bed comfort, and optimal air flow.')">Full Specs</button>
+                  <a href="../index.html#contact" class="btn btn-ebh-accent btn-sm w-100">Inquire Now</a>
+                </div>
               </div>
             </div>
           </div>

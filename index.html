@@ -25,7 +25,7 @@
           </div>
         </a>
 
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-toggle="collapse" data-target="#navbarContent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -121,37 +121,64 @@
           <a href="pages/accommodations.html" class="btn btn-outline-primary btn-sm">All Rooms <i class="bi bi-arrow-right"></i></a>
         </div>
         <div class="row g-4">
+          <!-- Room 1 -->
           <div class="col-md-4">
-            <div class="ebh-card h-100 p-4 d-flex flex-column justify-content-between">
-              <div>
-                <span class="badge bg-success-subtle text-success border mb-2">Popular</span>
-                <h5 class="fw-bold text-navy">Standard Solo Room</h5>
-                <div class="h3 fw-bold text-navy mb-3">₱5,000 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small">Private bedroom with work desk, bed frame, and personal cabinet.</p>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box">
+                <img src="assets/img/solo_room.jpg" alt="Standard Solo Room">
+                <span class="gallery-badge-category">Popular</span>
               </div>
-              <a href="pages/accommodations.html" class="btn btn-sm btn-outline-primary w-100">Details & Inclusions</a>
+              <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between bg-white">
+                <div>
+                  <h5 class="fw-bold text-navy mb-1">Standard Solo Room</h5>
+                  <div class="h3 fw-bold text-navy mb-2">₱5,000 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Private bedroom with dedicated study desk, sturdy bed frame, mattress, and wardrobe.</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-sm btn-outline-primary w-100" onclick="openRoomDetailsModal('Standard Solo Room', '₱5,000', 'Solo Private Room', ['Single bed & mattress included', 'Private study desk and chair', 'Lockable clothes cabinet', 'Water & electricity included in rent', 'Fast compound fiber Wi-Fi'], 'assets/img/solo_room.jpg', 'Quiet solo room located on the 1st floor of the boarding facility. Clean tiled floor, private window with natural ventilation, and move-in ready furniture.')">View Details</button>
+                  <a href="#contact" class="btn btn-sm btn-ebh-primary w-100">Inquire</a>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- Room 2 -->
           <div class="col-md-4">
-            <div class="ebh-card h-100 p-4 d-flex flex-column justify-content-between">
-              <div>
-                <span class="badge bg-primary-subtle text-primary border mb-2">Budget</span>
-                <h5 class="fw-bold text-navy">Shared Bedspace</h5>
-                <div class="h3 fw-bold text-navy mb-3">₱3,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small">Comfortable 2-person sharing with individual lockers and outlets.</p>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box">
+                <img src="assets/img/bedspace_room.jpg" alt="Shared Bedspace">
+                <span class="gallery-badge-category">Budget</span>
               </div>
-              <a href="pages/accommodations.html" class="btn btn-sm btn-outline-primary w-100">Details & Inclusions</a>
+              <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between bg-white">
+                <div>
+                  <h5 class="fw-bold text-navy mb-1">Shared Bedspace</h5>
+                  <div class="h3 fw-bold text-navy mb-2">₱3,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Comfortable 2-person sharing with individual lockers, study area, and dedicated bed outlets.</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-sm btn-outline-primary w-100" onclick="openRoomDetailsModal('Shared Bedspace (2-Person)', '₱3,500', 'Bedspace Unit', ['Individual single bed with mattress', 'Personal padlockable storage cabinet', 'Clean shared bathroom & shower', 'Water & electricity included in rent', 'Capped strictly at 2 occupants per room'], 'assets/img/bedspace_room.jpg', 'Bright shared room designed for budget-conscious students and young professionals. Strictly 2 occupants maximum.')">View Details</button>
+                  <a href="#contact" class="btn btn-sm btn-ebh-primary w-100">Inquire</a>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- Room 3 -->
           <div class="col-md-4">
-            <div class="ebh-card h-100 p-4 d-flex flex-column justify-content-between">
-              <div>
-                <span class="badge bg-warning-subtle text-warning-emphasis border mb-2">Spacious</span>
-                <h5 class="fw-bold text-navy">Solo Deluxe Suite</h5>
-                <div class="h3 fw-bold text-navy mb-3">₱5,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
-                <p class="text-muted small">Second floor corner unit with double bed and natural ventilation.</p>
+            <div class="ebh-card h-100 d-flex flex-column overflow-hidden">
+              <div class="room-preview-box">
+                <img src="assets/img/deluxe_suite.jpg" alt="Solo Deluxe Suite">
+                <span class="gallery-badge-category">Spacious</span>
               </div>
-              <a href="pages/accommodations.html" class="btn btn-sm btn-ebh-accent w-100">Details & Inclusions</a>
+              <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between bg-white">
+                <div>
+                  <h5 class="fw-bold text-navy mb-1">Solo Deluxe Suite</h5>
+                  <div class="h3 fw-bold text-navy mb-2">₱5,500 <span class="fs-6 fw-normal text-muted">/ mo</span></div>
+                  <p class="text-muted small mb-3">Upper floor corner suite featuring double bed, private work station, and premium ventilation.</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-sm btn-outline-primary w-100" onclick="openRoomDetailsModal('Solo Deluxe Suite', '₱5,500', 'Premium Solo Suite', ['Double bed frame and plush mattress', 'Spacious executive study desk & chair', 'Large double wardrobe closet', 'Water & electricity included in rent', 'Upper floor corner corner panoramic window'], 'assets/img/deluxe_suite.jpg', 'Our largest solo unit offering maximum privacy, double bed comfort, and optimal air flow.')">View Details</button>
+                  <a href="#contact" class="btn btn-sm btn-ebh-primary w-100">Inquire</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -169,22 +196,61 @@
           <a href="pages/gallery.html" class="btn btn-outline-primary btn-sm">Full Gallery (8 Photos) <i class="bi bi-arrow-right"></i></a>
         </div>
         <div class="row g-4">
+          <!-- Photo 1 -->
           <div class="col-md-4">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Exterior</span><i class="bi bi-shield-lock fs-1 text-navy mb-2"></i><strong class="text-navy small">Compound Entrance</strong></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Gated Compound</h6><p class="text-muted small mb-0">Secure perimeter with 24/7 night lighting.</p></div>
+            <div class="gallery-card" onclick="openPhotoLightbox('assets/img/exterior_compound.jpg', 'Gated Compound Facade', 'Exterior', 'Two-story residential boarding facility with secure perimeter and clean surroundings in Soldiers Village, Pasig City.')">
+              <div class="gallery-card-preview">
+                <img src="assets/img/exterior_compound.jpg" alt="Compound Exterior">
+                <span class="gallery-badge-category">Exterior</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <div>
+                  <h6 class="fw-bold text-navy mb-1">Residential Compound</h6>
+                  <p class="text-muted small mb-0">Peaceful two-story boarding facility in Soldiers Village, Pasig.</p>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- Photo 2 -->
           <div class="col-md-4">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Solo Room</span><i class="bi bi-door-closed fs-1 text-navy mb-2"></i><strong class="text-navy small">Solo Bedroom</strong></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Private Solo Room</h6><p class="text-muted small mb-0">Single bed, mattress, study desk, and wardrobe.</p></div>
+            <div class="gallery-card" onclick="openPhotoLightbox('assets/img/solo_room.jpg', 'Standard Solo Bedroom', 'Solo Room', 'Move-in ready single room with solid wooden bed frame, mattress, study desk, and storage closet.')">
+              <div class="gallery-card-preview">
+                <img src="assets/img/solo_room.jpg" alt="Solo Bedroom">
+                <span class="gallery-badge-category">Solo Room</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <div>
+                  <h6 class="fw-bold text-navy mb-1">Standard Solo Room</h6>
+                  <p class="text-muted small mb-0">Single bed, mattress, study desk, and clothes wardrobe.</p>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- Photo 3 -->
           <div class="col-md-4">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Kitchen</span><i class="bi bi-cup-hot fs-1 text-navy mb-2"></i><strong class="text-navy small">Dining Area</strong></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Shared Kitchen & Dining</h6><p class="text-muted small mb-0">Refrigerator, microwave, and sink station.</p></div>
+            <div class="gallery-card" onclick="openPhotoLightbox('assets/img/shared_kitchen.jpg', 'Shared Kitchen & Dining Station', 'Common Area', 'Spotless communal pantry with refrigerator, microwave, sink, and dining table.')">
+              <div class="gallery-card-preview">
+                <img src="assets/img/shared_kitchen.jpg" alt="Shared Kitchen">
+                <span class="gallery-badge-category">Kitchen</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <div>
+                  <h6 class="fw-bold text-navy mb-1">Shared Kitchen & Dining</h6>
+                  <p class="text-muted small mb-0">Refrigerator, microwave station, sink, and dining area.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -244,6 +310,13 @@
             <div class="ebh-card p-4 shadow-sm">
               <h4 class="fw-bold text-navy mb-2"><i class="bi bi-calendar2-check text-primary me-2"></i>Schedule a Viewing</h4>
               <p class="text-muted small mb-4">Leave your details and preferred date. We will confirm your visit via SMS.</p>
+              
+              <!-- Success Alert (Hidden until submission) -->
+              <div class="alert alert-success border-success" id="contactSuccessAlert" style="display:none;">
+                <h6 class="fw-bold text-success mb-1"><i class="bi bi-check-circle-fill me-1"></i> Viewing Request Confirmed!</h6>
+                <p class="small mb-0">Thank you! Your viewing schedule request has been logged. Our caretaker will send an SMS confirmation to your mobile number.</p>
+              </div>
+
               <form id="contactViewingForm">
                 <div class="mb-3">
                   <label class="form-label small fw-semibold text-navy">Your Full Name *</label>
@@ -265,7 +338,7 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label small fw-semibold text-navy">Preferred Viewing Date *</label>
-                  <input type="date" class="form-control" required value="2026-09-12">
+                  <input type="date" class="form-control" required value="2026-10-02">
                 </div>
                 <div class="mb-3">
                   <label class="form-label small fw-semibold text-navy">Questions or Notes</label>

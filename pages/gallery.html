@@ -23,7 +23,9 @@
             <span class="ebh-brand-subtitle d-none d-sm-block">Rooms & Bedspace Rental</span>
           </div>
         </a>
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-toggle="collapse" data-target="#navbarContent"><span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
             <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
@@ -58,7 +60,7 @@
         </div>
         <h1 class="display-4 fw-bold mb-3 text-white">Photo Gallery & Preview</h1>
         <p class="lead mb-4 mx-auto" style="max-width: 650px;">
-          Visual tour of our bedrooms, kitchen, common areas, and gated residential compound in Soldiers Village, Pasig City.
+          Visual tour of our bedrooms, kitchen, common areas, and gated residential compound in Soldiers Village, Pasig City. Click any photo to expand.
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
           <a href="accommodations.html" class="btn btn-ebh-accent btn-lg px-4"><i class="bi bi-door-open-fill me-1"></i> View Rooms</a>
@@ -72,64 +74,159 @@
       </div>
     </section>
 
-    <!-- 8 Photo Cards -->
+    <!-- Photo Gallery Grid with Interactive Filters -->
     <section class="py-5 bg-light">
       <div class="container">
-        <div class="row g-4">
-          <!-- 1: Entrance -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Exterior</span><i class="bi bi-shield-lock fs-1 text-navy mb-2"></i><strong class="text-navy small">Compound Entrance</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Gated Entrance</h6><p class="text-muted small mb-0">Secure perimeter gate with night lighting.</p></div>
+        <!-- Filter Tabs -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-5 btn-filter-group">
+          <button type="button" class="btn-filter active" data-filter="all" data-target-items="#galleryGrid .filterable-item"><i class="bi bi-grid-fill"></i> All Photos (8)</button>
+          <button type="button" class="btn-filter" data-filter="bedrooms" data-target-items="#galleryGrid .filterable-item"><i class="bi bi-door-closed-fill"></i> Bedrooms (3)</button>
+          <button type="button" class="btn-filter" data-filter="common" data-target-items="#galleryGrid .filterable-item"><i class="bi bi-cup-hot-fill"></i> Common Areas (3)</button>
+          <button type="button" class="btn-filter" data-filter="exterior" data-target-items="#galleryGrid .filterable-item"><i class="bi bi-building"></i> Compound & Exterior (2)</button>
+        </div>
+
+        <div class="row g-4" id="galleryGrid">
+          <!-- 1: Exterior Compound -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="exterior">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/exterior_compound.jpg', 'Residential Boarding House Facility', 'Exterior', 'Welcoming two-story residential compound located on 105 St., Soldiers Village, Pasig City.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/exterior_compound.jpg" alt="Compound Exterior">
+                <span class="gallery-badge-category">Exterior</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Compound Facade</h6>
+                <p class="text-muted small mb-0">Peaceful 2-story boarding house in Soldiers Village, Pasig.</p>
+              </div>
             </div>
           </div>
-          <!-- 2: Solo Room -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Solo Room</span><i class="bi bi-door-closed fs-1 text-navy mb-2"></i><strong class="text-navy small">Solo Bedroom</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Standard Solo Room</h6><p class="text-muted small mb-0">Single bed, mattress, study desk, and closet.</p></div>
+
+          <!-- 2: Compound Entrance Gate -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="exterior">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/gated_entrance.jpg', 'Gated Compound Entrance & Night Security', 'Exterior', 'Heavy-duty steel entrance gate with perimeter security and night lights.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/gated_entrance.jpg" alt="Gated Entrance">
+                <span class="gallery-badge-category">Exterior</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Gated Entrance</h6>
+                <p class="text-muted small mb-0">Secure perimeter gate with night illumination & curfew security.</p>
+              </div>
             </div>
           </div>
-          <!-- 3: Bedspace -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Bedspace</span><i class="bi bi-people fs-1 text-navy mb-2"></i><strong class="text-navy small">2-Person Room</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Shared Bedspace</h6><p class="text-muted small mb-0">Individual lockers and bed outlets.</p></div>
+
+          <!-- 3: Solo Room -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="bedrooms">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/solo_room.jpg', 'Standard Solo Bedroom', 'Solo Room', 'Move-in ready single room with solid wooden bed frame, mattress, study desk, and wardrobe.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/solo_room.jpg" alt="Solo Bedroom">
+                <span class="gallery-badge-category">Solo Room</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Standard Solo Room</h6>
+                <p class="text-muted small mb-0">Single bed, clean mattress, study desk, and wardrobe closet.</p>
+              </div>
             </div>
           </div>
-          <!-- 4: Deluxe -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Deluxe</span><i class="bi bi-stars fs-1 text-navy mb-2"></i><strong class="text-navy small">Deluxe Suite</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Corner Deluxe Suite</h6><p class="text-muted small mb-0">Corner unit with double bed & airflow.</p></div>
+
+          <!-- 4: Bedspace Room -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="bedrooms">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/bedspace_room.jpg', 'Shared Bedspace Room (2 Occupants Max)', 'Bedspace', 'Spacious 2-person sharing room with individual wooden beds, lockable cabinets, and personal power outlets.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/bedspace_room.jpg" alt="Shared Bedspace">
+                <span class="gallery-badge-category">Bedspace</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Shared Bedspace</h6>
+                <p class="text-muted small mb-0">Individual lockers, separate beds, and generous ventilation.</p>
+              </div>
             </div>
           </div>
-          <!-- 5: Kitchen -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Kitchen</span><i class="bi bi-cup-hot fs-1 text-navy mb-2"></i><strong class="text-navy small">Dining Area</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Shared Kitchen</h6><p class="text-muted small mb-0">Sink, refrigerator, and microwave station.</p></div>
+
+          <!-- 5: Solo Deluxe Suite -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="bedrooms">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/deluxe_suite.jpg', 'Solo Deluxe Suite', 'Deluxe Room', 'Upper floor corner suite featuring double bed, executive work station, air conditioner, and corner panoramic window.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/deluxe_suite.jpg" alt="Deluxe Suite">
+                <span class="gallery-badge-category">Deluxe</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Corner Deluxe Suite</h6>
+                <p class="text-muted small mb-0">Double bed, wide study desk, air conditioner, and bright views.</p>
+              </div>
             </div>
           </div>
-          <!-- 6: Study Lounge -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Common</span><i class="bi bi-book fs-1 text-navy mb-2"></i><strong class="text-navy small">Study Lounge</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Study Area</h6><p class="text-muted small mb-0">Quiet tables and chairs for reading & work.</p></div>
+
+          <!-- 6: Shared Kitchen -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="common">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/shared_kitchen.jpg', 'Shared Kitchen & Dining Station', 'Common Area', 'Clean communal pantry equipped with refrigerator, microwave, sink, and dining table.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/shared_kitchen.jpg" alt="Shared Kitchen">
+                <span class="gallery-badge-category">Kitchen</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Shared Kitchen</h6>
+                <p class="text-muted small mb-0">Pantry with refrigerator, microwave, sink, and dining set.</p>
+              </div>
             </div>
           </div>
-          <!-- 7: Bathroom -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Sanitary</span><i class="bi bi-droplet-half fs-1 text-navy mb-2"></i><strong class="text-navy small">Bathroom</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Clean Bathrooms</h6><p class="text-muted small mb-0">Tiled shower, mirror, and steady water.</p></div>
+
+          <!-- 7: Study Lounge -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="common">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/study_lounge.jpg', 'Quiet Study Lounge & Library Space', 'Common Area', 'Dedicated reading and study area with comfortable seating and warm reading lamps.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/study_lounge.jpg" alt="Study Lounge">
+                <span class="gallery-badge-category">Common</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Study Lounge</h6>
+                <p class="text-muted small mb-0">Quiet tables and chairs for late night study and remote work.</p>
+              </div>
             </div>
           </div>
-          <!-- 8: Laundry Area -->
-          <div class="col-md-6 col-lg-3">
-            <div class="photo-placeholder-card">
-              <div class="photo-placeholder-preview"><span class="photo-badge-category">Service</span><i class="bi bi-water fs-1 text-navy mb-2"></i><strong class="text-navy small">Laundry Space</strong><span class="photo-badge-dimen">HD</span></div>
-              <div class="photo-placeholder-body"><h6 class="fw-bold text-navy mb-1">Laundry & Drying</h6><p class="text-muted small mb-0">Handwash basins and covered clotheslines.</p></div>
+
+          <!-- 8: Residential Corridor & Hallway -->
+          <div class="col-md-6 col-lg-3 filterable-item" data-category="common">
+            <div class="gallery-card" onclick="openPhotoLightbox('../assets/img/hallway_corridor.jpg', 'Residential Hallway & Corridor', 'Common Area', 'Bright, well-lit corridor with ceramic tile flooring and room number identifiers.')">
+              <div class="gallery-card-preview">
+                <img src="../assets/img/hallway_corridor.jpg" alt="Hallway Corridor">
+                <span class="gallery-badge-category">Common</span>
+                <span class="gallery-badge-dimen">HD Photo</span>
+                <div class="gallery-overlay">
+                  <span class="gallery-overlay-btn"><i class="bi bi-zoom-in"></i> View Photo</span>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h6 class="fw-bold text-navy mb-1">Hallway Corridor</h6>
+                <p class="text-muted small mb-0">Well-lit clean hallway with tile flooring & emergency exit lights.</p>
+              </div>
             </div>
           </div>
         </div>

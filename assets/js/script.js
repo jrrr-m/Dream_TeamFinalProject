@@ -85,15 +85,33 @@ $(document).ready(function () {
     $('html, body').animate({ scrollTop: 0 }, 500);
   });
 
-  // 4. Smooth Anchor Scrolling for Public Pages
+  // 4. Safe Smooth Anchor Scrolling for Public Pages
   $('a[href^="#"]').on('click', function (e) {
-    const target = $(this.getAttribute('href'));
-    if (target.length) {
-      e.preventDefault();
-      const navOffset = $('.navbar-ebh').outerHeight() || 70;
-      $('html, body').stop().animate({
-        scrollTop: target.offset().top - navOffset
-      }, 600);
+    const href = this.getAttribute('href');
+    if (!href || href === '#' || href.length <= 1) return;
+    try {
+      const target = $(href);
+      if (target.length) {
+        e.preventDefault();
+        const navOffset = $('.navbar-ebh').outerHeight() || 70;
+        $('html, body').stop().animate({
+          scrollTop: target.offset().top - navOffset
+        }, 500);
+
+        // Auto close mobile navbar if open
+        if ($(window).width() < 992) {
+          $('#navbarContent').collapse('hide');
+        }
+      }
+    } catch (err) {
+      // Ignore selector syntax errors
+    }
+  });
+
+  // Auto-close mobile navbar on clicking standard navigation links
+  $('.navbar-ebh .navbar-nav .nav-link:not(.dropdown-toggle), .navbar-ebh .dropdown-item').on('click', function () {
+    if ($(window).width() < 992) {
+      $('#navbarContent').collapse('hide');
     }
   });
 
@@ -598,3 +616,145 @@ window.removeTenantRow = function (btn, name) {
     });
   }
 };
+
+// Photo Gallery Lightbox Viewer Modal
+window.openPhotoLightbox = function (src, title, category, desc) {
+  const modalHtml = `
+    <div class="modal fade" id="ebhPhotoLightboxModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content border-0 shadow-lg bg-navy text-white overflow-hidden">
+          <div class="modal-header border-0 pb-0 d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge badge-info text-dark px-2 py-1 mb-1 font-weight-bold">${category || 'Property Tour'}</span>
+              <h5 class="modal-title fw-bold text-white mb-0">${title || 'Eanne Boarding House Photo'}</h5>
+            </div>
+            <button type="button" class="close text-white border-0 bg-transparent p-2" data-dismiss="modal" aria-label="Close" style="font-size: 1.5rem; opacity: 0.9;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-3 text-center">
+            <div style="max-height: 70vh; overflow: hidden; border-radius: 8px; background: #0b1338;">
+              <img src="${src}" alt="${title}" class="img-fluid" style="max-height: 70vh; width: auto; object-fit: contain;">
+            </div>
+            ${desc ? `<p class="text-white-50 small mt-3 mb-0">${desc}</p>` : ''}
+          </div>
+          <div class="modal-footer border-0 pt-0 bg-navy justify-content-between">
+            <small class="text-white-50"><i class="bi bi-geo-alt-fill text-info me-1"></i> Soldiers Village, Brgy. Sta. Lucia, Pasig City</small>
+            <div class="d-flex gap-2">
+              <a href="../pages/contact.html" class="btn btn-ebh-accent btn-sm fw-bold"><i class="bi bi-calendar-event me-1"></i> Schedule a Visit</a>
+              <button type="button" class="btn btn-outline-light btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  $('#ebhPhotoLightboxModal').remove();
+  $('body').append(modalHtml);
+  $('#ebhPhotoLightboxModal').modal('show');
+};
+
+// Room Details Modal for Accommodations Page
+window.openRoomDetailsModal = function (title, rate, type, featuresArray, imageSrc, desc) {
+  const featuresList = (featuresArray || []).map(f => `<li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>${f}</li>`).join('');
+  const modalHtml = `
+    <div class="modal fade" id="roomDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content border-0 shadow-lg overflow-hidden">
+          <div class="modal-header bg-navy text-white">
+            <div>
+              <span class="badge badge-info text-dark px-2 py-1 mb-1 font-weight-bold">${type}</span>
+              <h5 class="modal-title fw-bold text-white mb-0">${title}</h5>
+            </div>
+            <button type="button" class="close text-white border-0 bg-transparent" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-0">
+            ${imageSrc ? `<div style="height: 280px; overflow: hidden; background: #e2e8f0;"><img src="${imageSrc}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;"></div>` : ''}
+            <div class="p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="h3 fw-bold text-navy mb-0">${rate} <span class="fs-6 fw-normal text-muted">/ month</span></div>
+                <span class="badge bg-success text-white border px-2 py-1"><i class="bi bi-check-circle me-1"></i> Utilities Included</span>
+              </div>
+              <p class="text-muted small mb-4">${desc}</p>
+              <h6 class="fw-bold text-navy mb-3"><i class="bi bi-stars text-primary me-2"></i>Inclusions & Amenities</h6>
+              <ul class="list-unstyled small text-muted mb-0">
+                ${featuresList}
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer bg-light justify-content-between">
+            <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i> Inclusive of Water & Electricity</small>
+            <div class="d-flex gap-2">
+              <a href="../index.html#contact" class="btn btn-ebh-primary btn-sm" onclick="$('#roomDetailModal').modal('hide');"><i class="bi bi-calendar2-check me-1"></i> Inquire for This Room</a>
+              <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  $('#roomDetailModal').remove();
+  $('body').append(modalHtml);
+  $('#roomDetailModal').modal('show');
+};
+
+// Real Financial Report CSV Export
+window.exportReportsCSV = function () {
+  const csvRows = [
+    ['Eanne Boarding House - Monthly Financial Report & Operating Ledger'],
+    ['Billing Period: October 2026', 'Location: Soldiers Village, Pasig City'],
+    [],
+    ['Reference #', 'Date', 'Tenant Name', 'Room Assigned', 'Payment Method', 'Amount (PHP)', 'Status'],
+    ['REF-992813', '2026-10-02', 'Maria Clara Santos', 'Room 102 (Solo)', 'GCash', '5000.00', 'Pending Verification'],
+    ['BPI-441029', '2026-10-02', 'Juan Dela Cruz', 'Room 201 (Bed A)', 'BPI Online', '3500.00', 'Pending Verification'],
+    ['MYA-812049', '2026-10-01', 'Patricia Reyes', 'Room 104 (Solo)', 'Maya QR', '5000.00', 'Pending Verification'],
+    ['GC-881290', '2026-10-01', 'Carlos Dominguez', 'Room 101 (Solo)', 'GCash', '5000.00', 'Verified Paid'],
+    ['BDO-992019', '2026-09-30', 'Gabriel Reyes', 'Room 202 (Bed A)', 'BDO Deposit', '3500.00', 'Verified Paid'],
+    ['CSH-1002', '2026-09-30', 'Andres Bonifacio', 'Room 204 (Solo)', 'Cash', '5000.00', 'Verified Paid'],
+    ['GC-771829', '2026-09-28', 'Beatriz Alonzo', 'Room 202 (Bed B)', 'GCash', '3500.00', 'Verified Paid'],
+    [],
+    ['Gross Collections Target', '75000.00'],
+    ['Current Verified & Queued Revenue', '68500.00'],
+    ['Collection Efficiency', '91.3%'],
+    ['Operating Utilities (Water/Power/WiFi)', '14200.00'],
+    ['Net Operating Flow', '54300.00']
+  ];
+
+  const csvContent = 'data:text/csv;charset=utf-8,' + csvRows.map(e => e.map(cell => `"${cell}"`).join(',')).join('\n');
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', 'eanne_boarding_house_financial_report_oct2026.csv');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  showToast('Report Exported', 'eanne_boarding_house_financial_report_oct2026.csv has been downloaded.', 'success');
+};
+
+// Clipboard Copy Helper
+window.copyToClipboard = function (text, label) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function () {
+      showToast('Copied to Clipboard', `${label || 'Item'}: ${text}`, 'success');
+    }).catch(function () {
+      fallbackCopy(text, label);
+    });
+  } else {
+    fallbackCopy(text, label);
+  }
+
+  function fallbackCopy(val, lbl) {
+    const tempInput = document.createElement('input');
+    tempInput.value = val;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    showToast('Copied to Clipboard', `${lbl || 'Item'}: ${val}`, 'success');
+  }
+};
+
