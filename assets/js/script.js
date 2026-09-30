@@ -222,7 +222,7 @@ $(document).ready(function () {
              .animate({ marginLeft: '10px' }, 60)
              .animate({ marginLeft: '0px' }, 60);
 
-        showToast('Access Denied', 'Invalid username or password. Check credentials hints below.', 'danger');
+        showToast('Access Denied', 'Invalid username or password. Please try again.', 'danger');
       }
     });
   }
