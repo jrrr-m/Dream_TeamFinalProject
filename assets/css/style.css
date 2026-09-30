@@ -210,8 +210,9 @@ h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.te
   .navbar-ebh .nav-item.dropdown:hover .dropdown-menu { display: block; margin-top: 0; }
 }
 
-/* Navbar Hamburger Toggler Button - Always High-Contrast Navy on Mobile */
+/* Navbar Hamburger Toggler Button - Hidden on Desktop (>=992px), Visible ONLY on Mobile (<992px) */
 .navbar-ebh .navbar-toggler {
+  display: none;
   padding: 0.45rem 0.7rem;
   font-size: 1.25rem;
   line-height: 1;
@@ -220,11 +221,14 @@ h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.te
   border-radius: var(--radius-sm);
   box-shadow: 0 2px 6px rgba(22, 34, 90, 0.08);
   transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--color-navy) !important;
   cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  .navbar-ebh .navbar-toggler {
+    display: none !important;
+  }
 }
 
 .navbar-ebh .navbar-toggler:hover,
@@ -261,6 +265,11 @@ h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.te
 
 /* Mobile Dropdown & Collapse Drawer */
 @media (max-width: 991.98px) {
+  .navbar-ebh .navbar-toggler {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
   .navbar-ebh .navbar-collapse {
     background: #ffffff;
     border-radius: var(--radius-md);
