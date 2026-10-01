@@ -1,16 +1,9 @@
-/**
- * Eanne Boarding House Rental - Interactive Script & jQuery Features
- * Provides animations, micro-interactions, filtering, toasts, and dashboard logic.
- */
-
 $(document).ready(function () {
 
-  // Ensure Toast Container exists
   if (!$('#ebhToastContainer').length) {
     $('body').append('<div id="ebhToastContainer" class="ebh-toast-container"></div>');
   }
 
-  // Ensure Back to Top Button exists
   if (!$('#btnBackToTop').length) {
     $('body').append('<a href="javascript:void(0)" id="btnBackToTop" class="btn-back-to-top" title="Back to top"><i class="bi bi-chevron-up"></i></a>');
   }
